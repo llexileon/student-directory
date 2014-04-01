@@ -6,29 +6,34 @@ puts "-------------------------------------------"
 
 # Names of students #
 
-puts "Steve Musgrave"
-puts "Sroop Sunar"
-puts "Colin Marshall"
-puts "Josh Fail-Brown"
-puts "Louise Lai"
-puts "Robin Doble"
-puts "Alex Wong"
-puts "Scott Dimmock"
-puts "Muhanad Al-Rubaiee"
-puts "Shelley Hope"
-puts "Will Hall"
-puts "Oliver Delevingne"
-puts "Nico"
-puts "Apostolis"
-puts "Stefania"
-puts "Jennifer Jentle"
-puts "Robert Leon"
-puts "Emma Williams"
-puts "Joey Wolf"
-puts "Julie Walker"
+students = [
+ "Steve Musgrave",
+ "Sroop Sunar",
+ "Colin Marshall",
+ "Josh Fail-Brown",
+ "Louise Lai",
+ "Robin Doble",
+ "Alex Wong",
+ "Scott Dimmock",
+ "Muhanad Al-Rubaiee",
+ "Shelley Hope",
+ "Will Hall",
+ "Oliver Delevingne",
+ "Nico",
+ "Apostolis",
+ "Stefania",
+ "Jennifer Jentle",
+ "Robert Leon",
+ "Emma Williams",
+ "Joey Wolf",
+ "Julie Walker",
+]
 
-# Student count #
-student_count = 9
+students.each do |student|
+	puts student
+end
+
+# Print total student count 
 
 puts ""
-puts "Overall, we have #{student_count} great students"
+puts "Overall, we have #{students.length} great students"
