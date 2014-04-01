@@ -4,6 +4,8 @@
 puts "The students of my cohort at Makers Academy"
 puts "-------------------------------------------"
 
+# Names of students #
+
 puts "Steve Musgrave"
 puts "Sroop Sunar"
 puts "Colin Marshall"
@@ -24,3 +26,9 @@ puts "Robert Leon"
 puts "Emma Williams"
 puts "Joey Wolf"
 puts "Julie Walker"
+
+# Student count #
+
+print "Pverall, we have "
+print 9
+puts " great students"
