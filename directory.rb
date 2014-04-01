@@ -28,7 +28,7 @@ puts "Joey Wolf"
 puts "Julie Walker"
 
 # Student count #
-
-print "Pverall, we have "
+puts ""
+print "Overall, we have "
 print 9
 puts " great students"
