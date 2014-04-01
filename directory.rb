@@ -28,7 +28,7 @@ puts "Joey Wolf"
 puts "Julie Walker"
 
 # Student count #
+student_count = 9
+
 puts ""
-print "Overall, we have "
-print 9
-puts " great students"
+puts "Overall, we have #{student_count} great students"
