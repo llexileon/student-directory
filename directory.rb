@@ -37,8 +37,13 @@ end
 
 # Print total student count with .length #
 def print_footer(students)
-puts ""
-puts "Overall, we have #{students.length} great students"
+	if students.length <= 1
+		puts ""
+		puts "Overall, we have #{students.length} great student"
+	else 
+		puts ""
+		puts "Overall, we have #{students.length} great students"
+	end
 end
 
 # Call the methods for output #
