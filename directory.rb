@@ -2,15 +2,15 @@
 # Student directory work in progress April 1st 2014 #
 
 def print_header 
-	puts "The students of my cohort at Makers Academy"
-    puts "-------------------------------------------"
+	print "The students of my cohort at Makers Academy\n"
+    print "-------------------------------------------\n"
 end
 
 # Ask for user input to compile student data #
 
 def input_students
-	puts "Please enter the names of the students you'd like to add to the database"
-	puts "To finish, just hit return twice"
+	print "Please enter the names of the students you'd like to add to the database \n"
+	print "To finish, just hit return twice \n"
 	# create an empty array #
 	students = []
 	#get the first name
@@ -28,26 +28,26 @@ end
 
 students = input_students
 
-def print(students)
+def printer(students)
 	#Calls block with two arguments, the item and its index, for each item in enum.
 	students.each_with_index do |student, index|
-		puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
+		print "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort) \n"
 	end
 end
 
 # Print total student count with .length #
 def print_footer(students)
 	if students.length <= 1
-		puts ""
-		puts "Overall, we have #{students.length} great student"
+		print ""
+		print "Overall, we have #{students.length} great student \n"
 	else 
-		puts ""
-		puts "Overall, we have #{students.length} great students"
+		print ""
+		print "Overall, we have #{students.length} great students \n"
 	end
 end
 
 # Call the methods for output #
 
 print_header
-print(students)
+printer(students)
 print_footer(students)
