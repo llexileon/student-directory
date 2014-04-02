@@ -15,13 +15,13 @@ def input_students
 	students = []
 	#get the first name
 	name = gets.chomp
-	#while the name is not empty, repeat this code
-	while !name.empty? do
-	# add the student hash to the array
-	students << {:name => name, :cohort => :March}
-	#get another name from the user
-	name = gets.chomp
-end
+		#while the name is not empty, repeat this code
+		while !name.empty? do
+		# add the student hash to the array
+		students << {:name => name, :cohort => :March}
+		#get another name from the user
+		name = gets.chomp
+		end
 #return the array of students
 students
 end
@@ -29,6 +29,7 @@ end
 students = input_students
 
 def print(students)
+	#Calls block with two arguments, the item and its index, for each item in enum.
 	students.each_with_index do |student, index|
 		puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
 	end
