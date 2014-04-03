@@ -30,14 +30,23 @@ end
 
 students = input_students
 
-# def nameswitha(students)
-# students_withA = students.select {|student| student[:name].downcase.start_with?("a")}
+def select_nameswitha(students)
+students_withA = students.select {|student| student[:name].downcase.start_with?("a")}
 # students_withA.each{|student| puts student[:name]}
-# end
+end
 
-def namesunder12(students)
+def print_student_nameswitha(students)
+	students.each{|student| puts student[:name]}
+end
+
+
+def select_namesunder12(students)
 namesunder12 = students.select {|student| student[:name].length <= 12}
-namesunder12.each{|student| puts student[:name]}
+# namesunder12.each{|student| student[:name]}
+end
+
+def print_student_namesunder12(students)
+	students.each{|student| puts student[:name]}
 end
 
 
@@ -69,7 +78,7 @@ end
 # Call the methods for output #
 
 print_header
-print namesunder12(students)
-# nameswitha(students)
+print_student_namesunder12(select_namesunder12(students))
+print_student_nameswitha(select_nameswitha(students))
 # student_index(students)
 print_footer(students)
