@@ -33,7 +33,7 @@ display(students)
 end
 
 # Print total student count with .length #
-def print_footer(students)
+def makers_footer(students)
     if students.length <= 1
         print "\n"
         print "Overall, we have #{students.length} great student \n".center(50)
@@ -43,19 +43,19 @@ def print_footer(students)
     end
 end
 
-def student_list_message
-    print "The students at Makers Academy!\n".center(50)
+def makers_academy_header
+    print "The Students Of Makers Academy!\n".center(50)
     print "------------------------------\n".center(5)
 end
 
 def display(students)
 	ticker = 0
-    student_list_message
+    makers_academy_header
 	while ticker < students.count 	
 	print "#{ticker+1}. #{students[ticker][:name]} from #{students[ticker][:city]} joined the #{students[ticker][:cohort]} cohort and loves #{students[ticker][:hobby]} \n"
 	ticker += 1
 	end
-    print_footer(students)
+    makers_footer(students)
 end
 
 
