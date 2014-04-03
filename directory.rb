@@ -11,10 +11,10 @@ end
 def input_students
 	print "Please enter the names of the students you'd like to add to the database \n"
 	print "To finish, just hit return twice \n"
-	# create an empty array #
-	students = []
 	#get the first name
 	name = gets.chomp
+	# create an empty array #
+	students = []
 		#while the name is not empty, repeat this code
 		while !name.empty? do
 		# add the student hash to the array
@@ -31,29 +31,39 @@ end
 students = input_students
 
 
-def select_namesunder12(students)
-namesunder12 = students.select {|student| student[:name].length <= 12}
-# namesunder12.each{|student| student[:name]}
-end
+# def select_namesunder12(students)
+# namesunder12 = students.select {|student| student[:name].length <= 12}
+# # namesunder12.each{|student| student[:name]}
+# end
 
-def print_student_namesunder12(students)
-	students.each{|student| puts student[:name]}
-end
+# def print_student_namesunder12(students)
+# 	students.each{|student| puts student[:name]}
+# end
 
-def select_nameswitha(students)
-students_withA = students.select {|student| student[:name].downcase.start_with?("a")}
-# students_withA.each{|student| puts student[:name]}
-end
+# def select_nameswitha(students)
+# students_withA = students.select {|student| student[:name].downcase.start_with?("a")}
+# # students_withA.each{|student| puts student[:name]}
+# end
 
-def print_student_nameswitha(students)
-	students.each{|student| puts student[:name]}
-end
-
+# def print_student_nameswitha(students)
+# 	students.each{|student| puts student[:name]}
+# end
 
 
 # def printAstudent
 # 	@students_withA.each{|student| puts student[:name]}
 # end
+
+
+
+def whilestudent_index(students)
+	ticker = 0
+	while ticker < students.count 	
+	print "#{ticker+1}. #{students[ticker][:name]} #{students[ticker][:cohort]} cohort \n"
+	ticker += 1
+	end
+end
+
 
 
 
@@ -80,6 +90,7 @@ end
 
 print_header
 # print_student_namesunder12(select_namesunder12(students))
-print_student_nameswitha(select_nameswitha(students))
+# print_student_nameswitha(select_nameswitha(students))
+whilestudent_index(students)
 # student_index(students)
 print_footer(students)
