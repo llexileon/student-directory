@@ -1,7 +1,7 @@
 
 # Student directory work in progress April 1st 2014 #
 
-def print_header 
+def print_header
 	print "The students of my cohort at Makers Academy\n"
     print "-------------------------------------------\n"
 end
@@ -25,10 +25,14 @@ def input_students
 		#while the name is not empty, repeat this code
 		while !name.empty? do
 		# add the student hash to the array
-		students << {:name => name, :cohort => cohort, :country => country, :hobby => hobby}
+		students << { :name => name,
+									:cohort => cohort,
+									:country => country,
+									:hobby => hobby
+								}
 		#get another name from the user
-	print "Please enter the next student name, followed by thier cohort, country, and hobby \n"
-	print "( Or to finish, just hit return a buncha times ;D ) \n"
+		print "Please enter the next student name, followed by thier cohort, country, and hobby \n"
+		print "( Or to finish, just hit return a buncha times ;D ) \n"
 		name = gets.chomp
 		cohort = gets.chomp
 		country = gets.chomp
@@ -70,8 +74,8 @@ students = input_students
 
 def whilestudent_index(students)
 	ticker = 0
-	while ticker < students.count 	
-	print "#{ticker+1}. #{students[ticker][:name]}, #{students[ticker][:cohort]} cohort, from #{students[ticker][:country]}, loves #{students[ticker][:hobby]} \n"
+	while ticker < students.count
+	print "#{ticker+1}. #{students[ticker][:name].to_s.center(10)}, #{students[ticker][:cohort].to_s.center(10)} cohort, from #{students[ticker][:country].to_s.center(10)}, loves #{students[ticker][:hobby].to_s.center(10)} \n"
 	ticker += 1
 	end
 end
@@ -92,7 +96,7 @@ def print_footer(students)
 	if students.length <= 1
 		print ""
 		print "Overall, we have #{students.length} great student \n"
-	else 
+	else
 		print ""
 		print "Overall, we have #{students.length} great students \n"
 	end
