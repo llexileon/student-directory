@@ -9,18 +9,30 @@ end
 # Ask for user input to compile student data #
 
 def input_students
-	print "Please enter the names of the students you'd like to add to the database \n"
-	print "To finish, just hit return twice \n"
+	print "Please enter the name of the first student you'd like to add to the database \n"
 	#get the first name
 	name = gets.chomp
+	print "Please enter the cohort of the first student you'd like to add to the database \n"
+	cohort = gets.chomp
+	print "Please enter the country of the first student you'd like to add to the database \n"
+	country = gets.chomp
+	print "Please enter the hobby of the first student you'd like to add to the database \n"
+	hobby = gets.chomp
+
+
 	# create an empty array #
 	students = []
 		#while the name is not empty, repeat this code
 		while !name.empty? do
 		# add the student hash to the array
-		students << {:name => name, :cohort => :March}
+		students << {:name => name, :cohort => cohort, :country => country, :hobby => hobby}
 		#get another name from the user
+	print "Please enter the next student name, followed by thier cohort, country, and hobby \n"
+	print "( Or to finish, just hit return a buncha times ;D ) \n"
 		name = gets.chomp
+		cohort = gets.chomp
+		country = gets.chomp
+		hobby = gets.chomp
 		end
 #return the array of students
 students
@@ -59,7 +71,7 @@ students = input_students
 def whilestudent_index(students)
 	ticker = 0
 	while ticker < students.count 	
-	print "#{ticker+1}. #{students[ticker][:name]} #{students[ticker][:cohort]} cohort \n"
+	print "#{ticker+1}. #{students[ticker][:name]}, #{students[ticker][:cohort]} cohort, from #{students[ticker][:country]}, loves #{students[ticker][:hobby]} \n"
 	ticker += 1
 	end
 end
