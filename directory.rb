@@ -26,14 +26,34 @@ def input_students
 students
 end
 
+
+
 students = input_students
 
-def printer(students)
-	#Calls block with two arguments, the item and its index, for each item in enum.
-	students.each_with_index do |student, index|
-		print "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort) \n"
-	end
+# def nameswitha(students)
+# students_withA = students.select {|student| student[:name].downcase.start_with?("a")}
+# students_withA.each{|student| puts student[:name]}
+# end
+
+def namesunder12(students)
+namesunder12 = students.select {|student| student[:name].length <= 12}
+namesunder12.each{|student| puts student[:name]}
 end
+
+
+# def printAstudent
+# 	@students_withA.each{|student| puts student[:name]}
+# end
+
+
+
+# def student_index(students)
+# 	#Calls block with two arguments, the item and its index, for each item.
+# 	students.each_with_index do |student, index|
+# 		print "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort) \n"
+# 	end
+# end
+
 
 # Print total student count with .length #
 def print_footer(students)
@@ -49,5 +69,7 @@ end
 # Call the methods for output #
 
 print_header
-printer(students)
+print namesunder12(students)
+# nameswitha(students)
+# student_index(students)
 print_footer(students)
