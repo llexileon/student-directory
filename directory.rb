@@ -2,7 +2,7 @@
 # Student directory work in progress April 3rd 2014 #
 
 # Ask for user input to compile student data #
-def multiple_user_inputer(*students)
+def multiple_user_inputer
 	
 	students = []
     name = "placeholder"
