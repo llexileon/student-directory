@@ -35,7 +35,7 @@ def multiple_user_inputer(*students)
             if answer.downcase == "list" ; return display(@students) end
         else
             puts "Your entry was incomplete and will not be saved, you must complete all fiends"
-            multiple_user_inputer
+            return multiple_user_inputer
         end
     end
 end
