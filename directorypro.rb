@@ -9,8 +9,9 @@ end
 
 def interactive_menu
 	puts "Please select from the following options:
-	'I' Input students
+	'I' Input students to database
 	'L' List students
+	'S' Save student list to file
 	'X' Exit"
 	selections = gets.chomp
 	selection = selections.upcase
@@ -21,6 +22,8 @@ def interactive_menu_case(selection)
 	case selection
 	when "I"
 		user_input
+	when "S"
+	    save_data	
 	when "L"
 		student_list_print(@students)
 	when "X"
@@ -57,7 +60,6 @@ name, cohort, city, hobby = placeholder
     hobby = gets.chomp
 
     validate_user_input(name, cohort, city, hobby)
-
 end
 
 def validate_user_input(name, cohort, city, hobby)
@@ -71,7 +73,7 @@ def validate_user_input(name, cohort, city, hobby)
 				puts "You did not enter a calendar month for your cohort, please try again!\n\n"
 				user_input
 			else name.empty? && cohort.empty? && city.empty? && hobby.empty?
-				#prompt when u haven´t entered all information, calls put_in_user
+				#prompt when u haven´t entered all information, calls user_input
 				puts "Please complete in all fields\n!"
 				list_or_continue
 			end
@@ -82,7 +84,7 @@ def list_or_continue
 	answer = gets.chomp
 	#if user wants to make more entries hit return, to see list enter list, calls student_list_printer
 	if answer.downcase == "list" ; return student_list_print(@students) end
-	put_in_user
+	user_input
 end
 
 def makers_academy_header
@@ -96,19 +98,32 @@ def empty_list
 	answer = gets.chomp
 	case answer
 		when "continue" 
-		put_in_user
+		user_input
 		when "quit"  
 		else 
 		puts "Error!"
 	end
 end
 
-def student_list_print(students)
+def turnaround
+	puts "\nTo continue editing the database type 'continue', to exit the program type 'quit'".center(50)
+	answer = gets.chomp
+	case answer
+		when "continue" 
+		interactive_menu
+		when "quit"  
+		else 
+		puts "Error!"
+	end
+end
+
+def student_list_print(students=[])
 	# puts students.inspect
 	if students.size > 0 
 	makers_academy_header
 	sort_students = students.sort_by{|student| @months.index(student[:month])}
 	sort_students.each_with_index{|student, counter| puts "#{counter + 1}. #{student[:month]}: #{student[:name]} from #{student[:city]} loves #{student[:hobby]}"}
+	save_data
 	makers_footer(students)
 else
     empty_list
@@ -121,12 +136,24 @@ def makers_footer(students)
 	#if only one student print student, with more print students
 	if students.count > 1
         print "\n"
-        print "Overall, we have #{students.length} great student \n".center(50)
+        print "Overall, we have #{students.length} great students \n".center(50)
     else
         print "\n"
-        print "Overall, we have #{students.length} great students \n".center(50)
+        print "Overall, we have #{students.length} great student \n".center(50)
     end
+    turnaround
 end
+
+
+def save_data
+    file = File.open("students.csv", "w")
+    @students.each do |student|
+    	student_data = [student[:name], student[:month], student[:city], student[:hobby]]
+    	csv_line = student_data.join(",")
+    	file.puts csv_line
+    end
+    file.close
+end 	
 
 # Call the method for output #
 welcome
