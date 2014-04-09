@@ -1,9 +1,35 @@
 
 # Student directory Pro in progress April 9th 2014 #
 def welcome
-    puts "Welcome to the Makers Academy Student Database! \n".center(70)
-    user_input
+    puts   "---------------------------------------------".center(70)
+    puts "Welcome to the Makers Academy Student Database!".center(70)
+    puts   "---------------------------------------------".center(70)
+    interactive_menu
 end
+
+def interactive_menu
+	puts "Please select from the following options:
+	'I' Input students
+	'L' List students
+	'X' Exit"
+	selections = gets.chomp
+	selection = selections.upcase
+	interactive_menu_case(selection)
+end
+
+def interactive_menu_case(selection)
+	case selection
+	when "I"
+		user_input
+	when "L"
+		student_list_print(@students)
+	when "X"
+	else
+		puts "No selection registered, please try again"
+		interactive_menu
+	end
+end
+
 
 @students = []
 @months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
@@ -83,10 +109,10 @@ def student_list_print(students)
 	makers_academy_header
 	sort_students = students.sort_by{|student| @months.index(student[:month])}
 	sort_students.each_with_index{|student, counter| puts "#{counter + 1}. #{student[:month]}: #{student[:name]} from #{student[:city]} loves #{student[:hobby]}"}
-	else
+	makers_footer(students)
+else
     empty_list
 	end
-	makers_footer(students)
 end
 
 def makers_footer(students)
