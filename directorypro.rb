@@ -12,7 +12,8 @@ def interactive_menu
 	puts "Please select from the following options:".neon
 	puts "
 	'I' Input students to database
-	'L' List students
+	'D' Display student database
+	'L' Load student csv file
 	'S' Save student list to file
 	'X' Exit".yellow
 	selections = gets.chomp
@@ -24,10 +25,12 @@ def interactive_menu_case(selection)
 	case selection
 	when "I"
 		user_input
+	when "D"
+		display_student_database(@students)
 	when "S"
 	    save_data	
 	when "L"
-		student_list_print(@students)
+		load_students
 	when "X"
 	else
 		puts "No selection registered, please try again".red
@@ -84,8 +87,8 @@ end
 def list_or_continue
 	puts "For Student List, enter 'List' Or, to continue adding students, enter: 'Next'".center(50).red
 	answer = gets.chomp
-	#if user wants to make more entries hit return, to see list enter list, calls student_list_printer
-	if answer.downcase == "list" ; return student_list_print(@students) end
+	#if user wants to make more entries hit return, to see list enter list, calls display_student_databaseer
+	if answer.downcase == "list" ; return display_student_database(@students) end
 	user_input
 end
 
@@ -120,12 +123,12 @@ def turnaround
 	end
 end
 
-def student_list_print(students=[])
+def display_student_database(students=[])
 	# puts students.inspect
 	if students.size > 0 
 	makers_academy_header
 	sort_students = students.sort_by{|student| @months.index(student[:month])}
-	sort_students.each_with_index{|student, counter| puts "#{counter + 1}. #{student[:month]}: #{student[:name]} from #{student[:city]} loves #{student[:hobby]}".yellow}
+	sort_students.each_with_index{|student, counter| puts "#{counter + 1}. #{student[:month]} Cohort: #{student[:name]} from #{student[:city]} loves #{student[:hobby]}".yellow}
 	save_data
 	makers_footer(students)
 else
@@ -149,14 +152,45 @@ end
 
 
 def save_data
-    file = File.open("students.csv", "w")
+    file = File.open("students.csv", "w") do |file|
     @students.each do |student|
     	student_data = [student[:name], student[:month], student[:city], student[:hobby]]
     	csv_line = student_data.join(",")
     	file.puts csv_line
     end
-    file.close
+end
 end 	
+
+def load_file_check
+	filename = ARGV.first
+
+	#return if filename.nil?
+	if !filename.nil? && File.exists?(filename) 
+		load_students(filename)
+		puts "successfully loaded file"
+		interactive_menu
+	else
+		welcome
+	end
+end
+
+
+def parse_file(line)
+    month, name, city, hobby = line.split(',')
+    @students << {month: month.to_sym, name: name, city: city, hobby: hobby}
+end
+
+
+def load_students(filename = "students.csv")
+	File.open(filename, "r") do |file|
+		file.readlines.each do |line| 
+			parse_file(line)	
+		end
+	end
+	interactive_menu
+end
+
+load_file_check
 
 # Call the method for output #
 welcome
